@@ -23,8 +23,6 @@ var path = {
     css: 'build/css/',
     img: 'build/img/',
     fonts: 'build/fonts/'
-    // style: 'build/css/style.css',
-    // modifiedStyle: 'build/css/modifiedStyle.css'
   },
   src: {
     html: 'src/*.html',
