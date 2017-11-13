@@ -1,0 +1,171 @@
+.block--footer-region {
+  background-color: $color-bg-footer;
+  color: $color-grey-light;
+  font-size: 10px;
+
+  .footer-item {
+    width: 100%;
+  }
+
+  .title,
+  .number {
+    color: $color-white-footer;
+    font-size: 14px;
+    font-family: $acrom;
+  }
+
+  .info-wrapper {
+    display: flex;
+
+    .title {
+      font-size: 30px;
+      font-family: $shadows-into;
+    }
+  }
+
+  .mail a {
+    color: $color-grey-light !important;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-grey-light2 !important;
+    }
+  }
+
+  .footer-menu,
+  .quick-links {
+    a {
+      color: $color-footer-link;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-footer-focus;
+      }
+    }
+  }
+
+  .quick-links {
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:before {
+        content: '>';
+        font-weight: 700;
+        padding-right: 6px;
+        color: $color-white-footer;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        border-bottom: 1px solid $color-footer-focus;
+      }
+    }
+  }
+
+  .footer-menu {
+    font-family: $acrom;
+
+    li {
+      list-style: none;
+
+      &:after {
+        padding-right: 8px;
+        padding-left: 8px;
+        content: '/';
+      }
+
+      &:last-child:after {
+        content: none;
+      }
+    }
+  }
+
+  .block--copyright,
+  .block--copyright-md {
+    font-family: $acrom;
+
+    span {
+      color: $color-footer-focus;
+    }
+  }
+
+  .block--copyright-md {
+    display: none;
+  }
+
+  ul.footer-menu {
+    border-bottom: 1px solid $color-footer-link;
+  }
+
+  .footer-search {
+    input,
+    button {
+      color: $color-white-footer;
+      border: 0 !important;
+    }
+
+    input {
+      width: 85%;
+      padding: 11px;
+      background-color: $color-bg-input;
+    }
+
+    button {
+      width: 13%;
+      padding-top: 11px;
+      padding-bottom: 11px;
+      background-color: $color-footer-link;
+      font-family: $acrom;
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@include media-breakpoint-up(md) {
+  .block--footer-region {
+    .footer-item {
+      display: inline-block;
+    }
+
+    .footer-bottom {
+      display: flex;
+      border-top: 1px solid $color-footer-link;
+    }
+
+    .info-wrapper {
+      display: block;
+    }
+
+    .block--copyright {
+      display: none;
+    }
+
+    .block--copyright-md {
+      display: block;
+    }
+
+    ul.footer-menu {
+      border: none;
+    }
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@include media-breakpoint-up(xl) {
+  .block--footer-region {
+    .info-wrapper {
+      display: flex;
+    }
+
+    .middle-col {
+      display: flex;
+    }
+  }
+}

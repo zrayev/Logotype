@@ -1,5 +1,61 @@
 <section class="header">
-  <header id="page-section-header" class="page__section--header">
-    Header
+  <header id="page-section-header" class="block--header-region">
+    <div class="block__body container pl-md-0 pr-md-0 w-100 pb-3 pt-3 align-items-center justify-content-between">
+      <a class="mobile-menu-open d-inline-block d-md-none" role="button">
+        <img src="./img/menu-icon.png" alt="menu-icon">
+      </a>
+      <div class="overlay d-md-none"></div>
+      <div class="block--mobile-menu d-md-none">
+        <div class="block__body d-block">
+          <div class="header pt-4 pb-4 clearfix">
+            <a class="mobile-menu-close float-left pl-3"><img src="./img/close-icon.png" alt="close-icon" role="button"></a>
+            <span class="label text-uppercase text-white font-weight-bold">Menu</span>
+          </div>
+          <ul id="mobile-menu" class="mobile-menu d-block d-md-none pl-3 pr-3 pt-5">
+            <li class="menu-item mb-3"><img class="pr-3" src="./img/home-icon.png" alt="home-icon"><a class="text-uppercase" href="#">Home</a></li>
+            <li class="menu-item mb-3"><img class="pr-3" src="./img/articles-icon.png" alt="blog-icon"><a class="text-uppercase" href="#">Blog</a></li>
+            <li class="menu-item"><img class="pr-3" src="./img/contact-icon.png" alt="contact-icon"><a class="text-uppercase" href="#">Contact us</a></li>
+          </ul>
+          <div class="footer text-center pb-4 mb-2 pt-4 mt-2">
+            <div class="social-media d-inline-block" role="navigation">
+            <span class="social-item twitter mr-2"><a class="button button-social button-social-green" href="#" role="button"><img
+                src="./img/twitter.png" alt="twitter"></a></span>
+              <span class="social-item facebook mr-2"><a class="button button-social button-social-green" href="#" role="button"><img
+                  src="./img/facebook.png" alt="facebook"></a></span>
+              <span class="social-item rss"><a class="button button-social button-social-green" href="#" role="button"><img
+                  src="./img/rss.png" alt="rss"></a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header__wrapper align-items-center justify-content-between">
+        <h2 class="title d-inline-block font-weight-normal text-white mb-0">Logotype</h2>
+        <div id="main-nav" class="main-nav-container block--menu-main d-md-inline-block text-uppercase text-white"
+             role="navigation">
+          <ul id="main-menu" class="main-menu d-xl-none mb-0 pl-0">
+            <li class="menu-item d-inline-block pr-4"><a href="#">Home</a></li>
+            <li class="menu-item d-inline-block pr-4"><a href="#">Blog</a></li>
+            <li class="menu-item d-inline-block"><a href="#">Contact us</a></li>
+          </ul>
+        </div>
+        <div class="social-media d-md-inline-block text-right" role="navigation">
+          <span class="social-item twitter mr-2"><a class="button button-social" href="#" role="button"><img src="./img/twitter.png" alt="twitter"></a></span>
+          <span class="social-item facebook mr-2"><a class="button button-social" href="#" role="button"><img
+              src="./img/facebook.png" alt="facebook"></a></span>
+          <span class="social-item rss"><a class="button button-social" href="#" role="button"><img src="./img/rss.png" alt="rss"></a></span>
+        </div>
+      </div>
+      <!--<div class="search d-inline-block">-->
+      <div class="main-nav-container block--menu-main-desktop d-none d-xl-inline-block text-uppercase text-white"
+           role="navigation">
+        <ul id="main-menu-desktop" class="main-menu-desktop mb-0 pl-0">
+          <li class="menu-item d-inline-block pr-4"><a href="#">Home</a></li>
+          <li class="menu-item d-inline-block pr-4"><a href="#">Blog</a></li>
+          <li class="menu-item d-inline-block"><a href="#">Contact us</a></li>
+        </ul>
+      </div>
+      <a href="#search" class="link--icon-search d-inline-block float-right"><img src="./img/magnify-glass.png" alt="magnify-glass"></a>
+      <!--</div>-->
+    </div>
   </header>
 </section>
