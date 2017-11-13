@@ -8,7 +8,6 @@ var gulp = require('gulp'),
   concatJs = require('gulp-concat'),
   sourcemaps = require('gulp-sourcemaps'),
   rigger = require('gulp-rigger'),
-  cssmin = require('gulp-minify-css'),
   cleanCSS = require('gulp-clean-css'),
   replace = require('gulp-string-replace'),
   imagemin = require('gulp-imagemin'),
@@ -74,7 +73,6 @@ gulp.task('style:build', function () {
     .pipe(sass({compress: true}))
     .pipe(prefixer())
     .pipe(cleanCSS())
-    .pipe(cssmin())
     .pipe(sourcemaps.write())
     .pipe(concatCss("style.css"))
     .pipe(gulp.dest(path.build.css))
