@@ -2,6 +2,7 @@
 
 **Deployment plan:**
 
+0. Run `git clone git@github.com:zrayev/Logotype.git .` in empty folder.
 1. Run `npm install` to install node modules.
 2. Run `gulp` to build project.
 3. Run `gulp css:replace` to replace css (replace some src path in style).
