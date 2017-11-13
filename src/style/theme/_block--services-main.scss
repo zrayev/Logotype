@@ -1,0 +1,20 @@
+.block--services-main {
+  .service-title {
+    color: $color-grey;
+    font-size: 14px;
+    font-family: $acrom;
+  }
+
+  .service-description,
+  .service-link {
+    font-size: 12px;
+  }
+
+  .service-description {
+    color: $color-grey-light;
+  }
+
+  .service-link {
+    color: $color-green-light
+  }
+}

@@ -1,0 +1,94 @@
+.block--header-region {
+  position: relative;
+
+  .mobile-menu-open {
+    z-index: 2;
+
+    &:hover,
+    &:focus,
+    &:active {
+      opacity: 0.75;
+    }
+  }
+
+  .block__body {
+    display: flex;
+    z-index: 2;
+    border-bottom: 1px solid $color-white;
+  }
+
+  .title {
+    font-size: 30px;
+    font-family: $shadows-into;
+  }
+
+  .header__wrapper {
+    z-index: 2;
+  }
+
+  .block--menu-main, .social-media {
+    display: none;
+  }
+
+  .link--icon-search {
+    z-index: 2;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@include media-breakpoint-up(md) {
+  .block--header-region {
+    .block__body {
+      display: block;
+      position: relative;
+    }
+
+    .block--menu-main, .social-media {
+      display: block;
+    }
+
+    .header__wrapper {
+      display: flex;
+      z-index: 2;
+    }
+
+    .block--menu-main,
+    .block--menu-main-desktop {
+      z-index: 2;
+
+      li a {
+        color: $color-white;
+        font-size: 14px;
+        font-family: $acrom;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $color-white;
+          text-decoration: none;
+          border-bottom: 3px solid $color-green-light;
+        }
+      }
+    }
+
+    .link--icon-search {
+      position: absolute;
+      top: 125%;
+      right: 0;
+      z-index: 2;
+    }
+  }
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@include media-breakpoint-up(xl) {
+  .block--header-region {
+    .block--menu-main-desktop {
+      position: absolute;
+      top: 125%;
+      left: 0;
+      z-index: 2;
+    }
+  }
+}

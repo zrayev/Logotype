@@ -1,0 +1,17 @@
+.block--intro-main {
+  border-bottom: 1px solid $color-grey-light2;
+
+  .title {
+    color: $color-grey;
+    font-size: 16px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@include media-breakpoint-up(md) {
+  .block--intro-main {
+    .block__body {
+      width: 65%;
+    }
+  }
+}

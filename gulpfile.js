@@ -1,13 +1,16 @@
 'use strict';
 
 var gulp = require('gulp'),
-  watch = require('gulp-watch'),
   prefixer = require('gulp-autoprefixer'),
   uglify = require('gulp-uglify'),
   sass = require('gulp-sass'),
+  concatCss = require('gulp-concat-css'),
+  concatJs = require('gulp-concat'),
   sourcemaps = require('gulp-sourcemaps'),
   rigger = require('gulp-rigger'),
   cssmin = require('gulp-minify-css'),
+  cleanCSS = require('gulp-clean-css'),
+  replace = require('gulp-string-replace'),
   imagemin = require('gulp-imagemin'),
   rimraf = require('rimraf'),
   browserSync = require("browser-sync"),
@@ -20,20 +23,16 @@ var path = {
     css: 'build/css/',
     img: 'build/img/',
     fonts: 'build/fonts/'
+    // style: 'build/css/style.css',
+    // modifiedStyle: 'build/css/modifiedStyle.css'
   },
   src: {
     html: 'src/*.html',
-    js: 'src/js/main.js',
-    style: 'src/style/main.scss',
+    js: 'src/js/*.js',
+    style: 'src/style/*.scss',
     img: 'src/img/**/*.*',
-    fonts: 'src/fonts/**/*.*'
-  },
-  watch: {
-    html: 'src/**/*.html',
-    js: 'src/js/**/*.js',
-    style: 'src/style/**/*.scss',
-    img: 'src/img/**/*.*',
-    fonts: 'src/fonts/**/*.*'
+    fonts: 'src/fonts/**/*.*',
+    css: 'build/css/*.css'
   },
   clean: './build'
 };
@@ -43,8 +42,8 @@ var config = {
     baseDir: "./build"
   },
   tunnel: true,
-  host: 'logotype',
-  port: 9000,
+  host: 'localhost',
+  port: 9013,
   logPrefix: "Logotype test web page"
 };
 
@@ -57,25 +56,37 @@ gulp.task('html:build', function () {
 
 gulp.task('js:build', function () {
   return gulp.src([path.src.js,
-    'node_modules/jquery/jquery.js',
-    'node_modules/popper.js/dist/popper.js',
-    'node_modules/bootstrap/dist/js/bootstrap.js'])
+    'node_modules/jquery/dist/jquery.min.js',
+    'node_modules/popper.js/dist/umd/popper.min.js',
+    'node_modules/bootstrap/dist/js/bootstrap.min.js'])
     .pipe(rigger())
     .pipe(sourcemaps.init())
     // .pipe(uglify())
     .pipe(sourcemaps.write())
+    // .pipe(concatJs('scripts.js'))
     .pipe(gulp.dest(path.build.js))
     .pipe(reload({stream: true}));
 });
 
 gulp.task('style:build', function () {
-  // return gulp.src([path.src.style, 'node_modules/bootstrap/scss/*.*'])
-  return gulp.src([path.src.style, 'node_modules/bootstrap/dist/css/bootstrap.css'])
+  return gulp.src([
+    'node_modules/bootstrap/dist/css/bootstrap.css',
+    path.src.style])
     .pipe(sourcemaps.init())
-    .pipe(sass())
+    .pipe(sass({compress: true}))
     .pipe(prefixer())
+    .pipe(cleanCSS())
     .pipe(cssmin())
     .pipe(sourcemaps.write())
+    .pipe(concatCss("style.css"))
+    .pipe(gulp.dest(path.build.css))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('css:replace', function () {
+  gulp.src(path.src.css)
+    .pipe(replace('"/fonts/Acrom/Acrom.otf"', '"../fonts/Acrom/Acrom.otf"'))
+    .pipe(replace('"/fonts/HelveticaNeueCyr/HelveticaNeueMedium.otf"', '"../fonts/HelveticaNeueCyr/HelveticaNeueMedium.otf"'))
     .pipe(gulp.dest(path.build.css))
     .pipe(reload({stream: true}));
 });
@@ -104,24 +115,6 @@ gulp.task('build', [
   'image:build'
 ]);
 
-gulp.task('watch', function () {
-  watch([path.watch.html], function (event, cb) {
-    gulp.start('html:build');
-  });
-  watch([path.watch.style], function (event, cb) {
-    gulp.start('style:build');
-  });
-  watch([path.watch.js], function (event, cb) {
-    gulp.start('js:build');
-  });
-  watch([path.watch.img], function (event, cb) {
-    gulp.start('image:build');
-  });
-  watch([path.watch.fonts], function (event, cb) {
-    gulp.start('fonts:build');
-  });
-});
-
 gulp.task('webserver', function () {
   browserSync(config);
 });
@@ -130,4 +123,4 @@ gulp.task('clean', function (cb) {
   rimraf(path.clean, cb);
 });
 
-gulp.task('default', ['build', 'webserver', 'watch']);
+gulp.task('default', ['build']);

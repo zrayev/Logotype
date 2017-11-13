@@ -1,0 +1,23 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
+
+@font-face {
+  font-family: "Acrom";
+  src: url('/fonts/Acrom/Acrom.otf');
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("/fonts/HelveticaNeueCyr/HelveticaNeueMedium.otf");
+}
+
+// Font Variables
+$shadows-into: "Shadows Into Light Two";
+$acrom: "Acrom";
+$helvetica-neue: "Helvetica Neue";
+
+$base-font-size: 12px;
+
+p {
+  font-size: $base-font-size;
+}
